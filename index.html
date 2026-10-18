@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#05070b">
+<title>EchoWave | Dark Knight Audio</title>
+<style>
+:root{color-scheme:dark;--bg:#05070b;--panel:#0c1118;--line:#273544;--gold:#f3c969;--text:#f3f5f7;--muted:#98a5b4}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -18%,#243343 0,transparent 43%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh;padding-bottom:150px}
+button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.app{width:min(100%,760px);margin:auto;padding:20px 16px 28px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:24px}.brand{display:flex;align-items:center;gap:10px}.logo{height:43px;width:54px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(145deg,#f7d987,#b78426);border:1px solid #ffe5a0}.logo svg{width:43px}.brandname{font-size:19px;letter-spacing:1px;font-weight:900}.brandname span{color:var(--gold)}.tagline{font-size:9px;color:var(--muted);letter-spacing:1.6px;margin-top:4px}.pill{border:1px solid #455464;background:#101923;color:#d7e4f0;border-radius:999px;padding:8px 9px;font-size:9px;letter-spacing:.7px;font-weight:800}
+.hero{border:1px solid #394a5b;border-radius:21px;padding:22px 19px;margin-bottom:22px;background:linear-gradient(140deg,#17222e,#0b1017 65%,#111720);position:relative;overflow:hidden}.eyebrow{font-size:10px;letter-spacing:2.3px;color:var(--gold);font-weight:900;margin-bottom:11px}h1{font-size:clamp(28px,7vw,42px);letter-spacing:-1.3px;line-height:1.05;margin:0 0 9px;font-weight:900}.shine{color:#f7d987}.subtitle{margin:0;color:#aeb9c5;font-size:12px;line-height:1.6;max-width:370px}
+.card{border:1px solid #273544;background:#0c1118;border-radius:17px;padding:15px;margin:15px 0}.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:21px 1px 12px}.sectionhead h2{font-size:17px;margin:0}.small{font-size:10px;color:var(--muted);line-height:1.5}
+.searchrow{display:flex;gap:8px;margin-top:13px}.searchrow input{min-width:0;flex:1;background:#06090e;border:1px solid #354454;color:white;border-radius:11px;padding:12px;font-size:13px}.primary{border:1px solid #ffe4a0;color:#11151a;background:linear-gradient(100deg,#f5d781,#c99838);padding:11px 14px;border-radius:11px;font-weight:900;font-size:12px;white-space:nowrap}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.chip{border:1px solid #2b3947;background:#0e141c;color:#c5d0db;border-radius:999px;padding:7px 10px;font-size:11px}.chip:active,.chip:focus{border-color:var(--gold);color:#ffe8ad}
+.results{display:grid;gap:11px}.track{display:grid;grid-template-columns:84px minmax(0,1fr);gap:11px;padding:9px;border:1px solid #263440;background:linear-gradient(100deg,#101720,#0a0e14);border-radius:14px}.thumb{width:84px;height:84px;object-fit:cover;border-radius:10px;background:#17222e}.tracktitle{font-size:12px;font-weight:800;line-height:1.4;margin-bottom:5px}.artist{font-size:10px;color:var(--muted);margin-bottom:6px}.meta{font-size:10px;color:#8291a0;margin-bottom:8px}.playbtn{border:1px solid #5b5031;background:#2b261a;color:#ffe6a0;border-radius:9px;padding:8px 10px;font-size:11px;font-weight:800}.empty{border:1px dashed #3b4b5a;border-radius:15px;padding:22px 15px;text-align:center;color:var(--muted);font-size:12px;line-height:1.6}.empty strong{display:block;color:#f3d987;font-size:14px;margin-bottom:5px}
+.player{position:fixed;z-index:10;left:0;right:0;bottom:0;background:rgba(8,12,18,.97);border-top:1px solid #435365;padding:12px 16px calc(12px + env(safe-area-inset-bottom));backdrop-filter:blur(12px)}.playerinner{width:min(100%,728px);margin:auto}.nowrow{display:flex;align-items:center;gap:10px;margin-bottom:9px}.nowthumb{width:44px;height:44px;border-radius:8px;object-fit:cover;background:#182330}.nowtext{flex:1;min-width:0}.nowtitle{font-size:12px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.nowartist{font-size:10px;color:var(--muted);margin-top:3px}.controls{display:flex;align-items:center;gap:10px}.controls button{border:1px solid #3b4b5a;background:#121a23;color:#f3d987;border-radius:10px;padding:8px 12px;font-weight:800}.controls audio{height:35px;min-width:0;flex:1;width:100%}.note{font-size:10px;color:#778594;line-height:1.6;margin-top:15px}
+@media(max-width:390px){.pill{font-size:8px}.searchrow{flex-wrap:wrap}.searchrow .primary{width:100%}.track{grid-template-columns:72px minmax(0,1fr)}.thumb{width:72px;height:72px}.controls{gap:6px}.controls button{padding:8px}}
+</style>
+</head>
+<body>
+<main class="app">
+<header class="topbar"><div class="brand"><div class="logo" aria-hidden="true"><svg viewBox="0 0 100 54" fill="none"><path d="M7 29 17 15 29 19 39 10 50 17 61 10 71 19 83 15 93 29 80 38 67 35 58 43 42 43 33 35 20 38Z" fill="#111820" stroke="#111820" stroke-width="3" stroke-linejoin="round"/><path d="M17 25 31 24 40 30 50 27 60 30 69 24 83 25" stroke="#f8e4a7" stroke-width="2.5" stroke-linecap="round"/></svg></div><div><div class="brandname">ECHO<span>WAVE</span></div><div class="tagline">DARK KNIGHT AUDIO</div></div></div><div class="pill">GOTHAM AFTER DARK</div></header>
+<section class="hero"><div class="eyebrow">THE NIGHT IS YOURS</div><h1>Your soundtrack.<br><span class="shine">No video. Just audio.</span></h1><p class="subtitle">Search licensed royalty-free tracks and stream MP3 audio directly inside EchoWave.</p></section>
+<section class="card">
+<div class="sectionhead" style="margin-top:0"><h2>Search music</h2><span class="small">Audio-only player</span></div>
+<p class="small">Explore tracks from Free To Use. Its catalog is royalty-free music, not every commercial Telugu, Hindi, or English hit. Track availability and license terms apply.</p>
+<form id="searchForm" class="searchrow"><input id="query" type="search" placeholder="e.g. cinematic, chill, electronic" required maxlength="100"><button class="primary" type="submit">SEARCH</button></form>
+<div class="chips"><button class="chip" data-query="cinematic">Cinematic</button><button class="chip" data-query="chill">Chill</button><button class="chip" data-query="electronic">Electronic</button><button class="chip" data-query="ambient">Ambient</button></div>
+<div id="status" class="small" style="margin-top:12px" aria-live="polite">Search for a mood, genre, artist, or track.</div>
+<div id="results" class="results" style="margin-top:12px"></div>
+</section>
+<p class="note">Music is provided by Free To Use under its license. Check the provider's current license conditions before sharing or using EchoWave commercially. EchoWave is an independent project and is not affiliated with Free To Use, YouTube, or DC.</p>
+</main>
+<section class="player" aria-label="Audio player"><div class="playerinner">
+<div class="nowrow"><img id="nowThumb" class="nowthumb" alt="" src=""><div class="nowtext"><div id="nowTitle" class="nowtitle">Choose a track to begin</div><div id="nowArtist" class="nowartist">EchoWave audio player</div></div></div>
+<div class="controls"><button id="prevBtn" type="button" aria-label="Previous track">◀</button><audio id="audio" controls preload="none"></audio><button id="nextBtn" type="button" aria-label="Next track">▶</button></div>
+</div></section>
+<script>
+(() => {
+const API='https://api.freetouse.com/v3';
+const $=id=>document.getElementById(id);
+let tracks=[],current=-1,requestToken=0;
+function textOnly(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function artistNames(track){return (track.artists||[]).map(a=>Array.isArray(a)?a[1]?.name:a?.name).filter(Boolean).join(', ')||'Free To Use'}
+function duration(seconds){if(!Number.isFinite(Number(seconds)))return '';const n=Math.floor(Number(seconds));return Math.floor(n/60)+':'+String(n%60).padStart(2,'0')}
+function showStatus(message){$('status').textContent=message}
+async function searchTracks(query){
+ const token=++requestToken;showStatus('Searching licensed music…');$('results').innerHTML='';
+ try{
+  const url=API+'/music/tracks/search?query='+encodeURIComponent(query)+'&limit=15&offset=0&order=plays&sort=desc';
+  const response=await fetch(url,{headers:{'Accept':'application/json'}});
+  if(!response.ok)throw new Error('Music service returned '+response.status);
+  const data=await response.json();if(token!==requestToken)return;
+  tracks=(data.data||[]).filter(t=>t&&t.files&&t.files.mp3);
+  if(!tracks.length){showStatus('No playable MP3 tracks found for that search. Try cinematic, chill, electronic, or ambient.');return}
+  showStatus('Found '+tracks.length+' playable audio tracks. Tap Play to listen.');
+  tracks.forEach((track,index)=>{
+   const card=document.createElement('article');card.className='track';
+   const img=document.createElement('img');img.className='thumb';img.alt='Album artwork';img.loading='lazy';img.src=track.thumbnails?.md||track.thumbnails?.sm||'';img.onerror=()=>{img.style.visibility='hidden'};
+   const info=document.createElement('div'),title=document.createElement('div'),artist=document.createElement('div'),meta=document.createElement('div'),button=document.createElement('button');
+   title.className='tracktitle';title.textContent=track.title||'Untitled track';artist.className='artist';artist.textContent=artistNames(track);meta.className='meta';meta.textContent=[track.genre, duration(track.duration)].filter(Boolean).join(' · ');button.className='playbtn';button.type='button';button.textContent='▶ Play audio';button.onclick=()=>playTrack(index);
+   info.append(title,artist,meta,button);card.append(img,info);$('results').append(card);
+  });
+ }catch(err){if(token===requestToken)showStatus('Could not load music right now. Check your connection and try again.')}
+}
+function playTrack(index){
+ const track=tracks[index];if(!track||!track.files?.mp3){showStatus('This track has no available MP3 stream.');return}
+ current=index;$('nowTitle').textContent=track.title||'Untitled track';$('nowArtist').textContent=artistNames(track);$('nowThumb').src=track.thumbnails?.sm||track.thumbnails?.md||'';$('nowThumb').style.visibility='visible';
+ const audio=$('audio');audio.src=track.files.mp3;audio.play().then(()=>showStatus('Now playing: '+(track.title||'Untitled track'))).catch(()=>showStatus('Track loaded. Tap the audio play button to start playback.'));
+ document.querySelectorAll('.playbtn').forEach((b,i)=>b.textContent=i===index?'▶ Playing':'▶ Play audio');
+}
+$('searchForm').addEventListener('submit',e=>{e.preventDefault();const q=$('query').value.trim();if(q)searchTracks(q)});
+document.querySelectorAll('[data-query]').forEach(b=>b.addEventListener('click',()=>{$('query').value=b.dataset.query;searchTracks(b.dataset.query)}));
+$('prevBtn').onclick=()=>{if(tracks.length)playTrack((current-1+tracks.length)%tracks.length)};
+$('nextBtn').onclick=()=>{if(tracks.length)playTrack((current+1)%tracks.length)};
+$('audio').addEventListener('ended',()=>{if(tracks.length)playTrack((current+1)%tracks.length)});
+})();
+</script>
+</body>
+</html>
