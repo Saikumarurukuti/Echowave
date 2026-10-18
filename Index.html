@@ -41,7 +41,7 @@ button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus
 </main><div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script>
 (() => {
-const API_KEY = "PASTE_YOUR_NEW_API_KEY_HERE";
+const API_KEY = "AIzaSyCxlNDiNZiDlSDAoXraZuEtbY13Wukqmfs";
 const $=id=>document.getElementById(id);
 let toastTimer=[];
 function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),3000)}
